@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router';
+import ATS from '~/components/ATS';
+import Detail from '~/components/Detail';
 import Summary from '~/components/Summary';
 import { usePuterStore } from '~/lib/puter';
 
@@ -63,7 +65,7 @@ const Resume = () => {
                 </Link>
             </nav>
             <div className="flex flex-row w-full max-lg:flex-col-reverse">
-                <section className="feedback-section bg-[url('/images/bg-small.svg') bg-cover h-screen sticky] top-0 items-center justify-center">
+                <section className="feedback-section bg-[url('/images/bg-small.svg')] bg-cover h-screen sticky top-0 items-center justify-center">
                     {imageUrl && resumeUrl && (
                         <div className='animate-in fade-in duration-1000 gradient-border max-sm:m-0 h-[90%] max-w-xl:h-fit w-fit'>
                             <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
@@ -82,7 +84,7 @@ const Resume = () => {
                         <div className='flex flex-col gap-8 animate fade-in duration-1000'>
                             <Summary feedback={feedback} />
                             <ATS score={feedback.ATS.score || 0} suggestions={feedback.ATS.tips || []}/>
-                            <Details feedback={feedback}/>
+                            <Detail feedback={feedback}/>
                         </div>
                     ): (
                         <img src="/images/resume-scan-2.gif" className='w-full'/>
